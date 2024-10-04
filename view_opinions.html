@@ -58,6 +58,18 @@
         .refresh-btn:hover {
             background-color: #45a049;
         }
+
+        .image-link {
+            display: block; /* Make the image a block element */
+            text-align: center; /* Center align the image */
+            margin: 20px auto; /* Center the image */
+        }
+
+        .image-link img {
+            max-width: 100%; /* Ensure the image is responsive */
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 5px; /* Optional: add some rounding */
+        }
     </style>
 </head>
 <body>
@@ -68,12 +80,13 @@
         <!-- The opinions will be displayed here dynamically -->
     </div>
 
-<!--     <button class="refresh-btn" onclick="refreshOpinions()">Refresh Opinions</button> -->
-   
-        
+    <!-- Image linked to index.html -->
+    <a class="image-link" href="index.html">
         <img src="img/cons.png" alt="Start Again" /> <!-- Update the path to your image -->
-     <button class="refresh-btn" onclick="window.location.href='index.html'">Start Again</button>
-<!--         <button class="refresh-btn" onclick="refreshOpinions()">Refresh Opinions</button> -->
+    </a>
+    
+    <!-- Start Again button -->
+    <button class="refresh-btn" onclick="window.location.href='index.html'">Start Again</button>
 
     <script>
         // Function to retrieve and display all opinions
@@ -93,11 +106,6 @@
                     opinionList.appendChild(opinionItem);
                 });
             }
-        }
-
-        // Refresh opinions on button click
-        function refreshOpinions() {
-            displayOpinions();
         }
 
         // Automatically display opinions when the page loads
