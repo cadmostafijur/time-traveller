@@ -1,0 +1,100 @@
+/* General styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    /* background-color: #f0f9ff; */
+}
+
+h1, h2 {
+    color: #f6823b;
+    text-align: center;
+}
+
+button {
+    margin-top: 20px;
+    padding: 15px 30px;
+    background-color: #2b6777;
+    color: white;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #4a8c9b;
+}
+
+header {
+    /* background-color: #4e9fd1; */
+    color: white;
+    padding: 10px;
+}
+
+main {
+    padding: 20px;
+    text-align: center;
+}
+
+.landing-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('img/timetravel.gif'); /* Replace with your image path */
+    background-size: cover;
+    background-position: center;
+}
+
+.instruction-page, .chapter-content, .quiz-form, .finish-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    /* background-color: white; */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.instruction-content, .quiz-form {
+    text-align: left;
+}
+
+.quiz-form p {
+    font-weight: bold;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    margin-bottom: 10px;
+}
+
+.start-btn, .next-btn {
+    margin-top: 200px;
+    padding: 15px 30px;
+    background-color: #f19407;
+    color: white;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.start-btn:hover, .next-btn:hover {
+    background-color: #f3b407;
+}
+
+footer {
+    background-color: #2b6777;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}

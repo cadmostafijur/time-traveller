@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Congratulations!</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Ensure html and body take full height */
+        html, body {
+            height: 100%; /* Full page height */
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-image: url('/img/final.webp'); /* Replace with your background image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+        }
+
+        header {
+            padding: 5vh 10px; /* Adjusted padding for responsiveness */
+            text-align: center;
+        }
+
+        header h1 {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: rgb(235, 215, 113);
+            padding: 2vh 20px;
+            border-radius: 5px;
+            font-size: 2rem; /* Responsive font size */
+        }
+
+        main {
+            display: flex;
+            justify-content: center; /* Center the content horizontally */
+            align-items: center; /* Center the content vertically */
+            height: 80vh; /* Set height to 80% of the viewport */
+            text-align: center;
+            padding: 20px;
+        }
+
+        .finish-content {
+            max-width: 600px;
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+            padding: 2rem;
+            margin: auto; /* Center the content */
+            text-align: center;
+        }
+
+        .finish-content h2 {
+            font-size: 1.8rem; /* Adjusted for responsiveness */
+        }
+
+        .finish-content p {
+            font-size: 1.2rem;
+        }
+
+        .start-btn {
+            padding: 12px 25px;
+            background-color: #eccd5f;
+            color: rgb(18, 3, 3);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 15px;
+            margin-right: 10px;
+            display: inline-block;
+        }
+
+        .start-btn:hover {
+            background-color: #efb763;
+        }
+
+        /* Media query for smaller screens */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.5rem; /* Smaller font size for mobile */
+            }
+
+            .finish-content {
+                padding: 1.5rem;
+            }
+
+            .finish-content h2 {
+                font-size: 1.5rem;
+            }
+
+            .finish-content p {
+                font-size: 1rem;
+            }
+
+            .start-btn {
+                font-size: 0.9rem; /* Smaller button text on mobile */
+                padding: 10px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Congratulations! The actions you took in the present travelled through decades to reach this era. Your actions are the true time travellers! </h1>
+    </header>
+
+    <main>
+        <div class="finish-content">
+            <h2>Well Done!</h2>
+            <p>You have successfully completed all chapters and quizzes.</p>
+            <button class="start-btn" onclick="window.location.href='index.html'">Start Again</button>
+            <button class="start-btn" onclick="window.location.href='opinion.html'">Opinion</button>
+            <button class="start-btn" onclick="window.location.href='view_opinions.html'">View Opinion</button>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        displayResults();
+    </script>
+</body>
+</html>

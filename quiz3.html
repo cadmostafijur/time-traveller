@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz 3: The Future</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-image: url('/img/fofearthgif.gif'); /* Path to your background image */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            padding: 10px;
+            text-align: center;
+        }
+
+        header h1 {
+            background-color: rgba(0, 0, 0, 0.8); /* Dark background for readability */
+            color: rgb(235, 215, 113);
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .quiz-form {
+            max-width: 600px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px;
+        }
+
+        .quiz-form p {
+            margin: 10px 0;
+        }
+
+        .next-btn {
+            padding: 10px 20px;
+            background-color: #eccd5f;
+            color: rgb(18, 3, 3);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+
+        .next-btn:hover {
+            background-color: #efb763;
+        }
+
+        /* Styled feedback box */
+        .feedback-box {
+            display: none; /* Initially hidden */
+            max-width: 600px;
+            background-color: rgba(255, 255, 255, 0.8); /* Light background for feedback box */
+            color: black; /* Dark text for feedback */
+            border: 2px solid #4CAF50; /* Green border */
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .quiz-form {
+                width: 90%;
+            }
+
+            header h1 {
+                font-size: 24px;
+            }
+
+            .next-btn {
+                font-size: 14px;
+            }
+
+            .feedback-box {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Quiz 3: The Future</h1>
+    </header>
+
+    <main>
+        <form id="quiz3" class="quiz-form">
+            <p>1. What new technology is helping us monitor Earth’s resources?</p>
+            <input type="radio" id="q1a1" name="q1" value="NASA’s SWOT mission">
+            <label for="q1a1">NASA’s SWOT mission</label><br>
+            <input type="radio" id="q1a2" name="q1" value="The Mars Rover">
+            <label for="q1a2">The Mars Rover</label><br>
+
+            <button type="button" class="next-btn" onclick="submitQuiz('quiz3', 'datasetusenasa.html', ['NASA’s SWOT mission'])">Submit Quiz</button>
+        </form>
+
+        <div id="feedback" class="feedback-box"></div> <!-- Feedback box -->
+    </main>
+
+    <script>
+        function submitQuiz(formId, nextPage, correctAnswers) {
+            const form = document.getElementById(formId);
+            const formData = new FormData(form);
+            let score = 0;
+
+            // Check answers
+            correctAnswers.forEach((answer, index) => {
+                if (formData.get(`q${index + 1}`) === answer) {
+                    score++;
+                }
+            });
+
+            // Display feedback
+            const feedbackDiv = document.getElementById('feedback');
+            feedbackDiv.style.display = 'block'; // Show the feedback box
+
+            if (score === correctAnswers.length) {
+                feedbackDiv.textContent = "Congratulations! You answered all questions correctly!";
+                feedbackDiv.style.borderColor = "green"; // Green border for correct answers
+                setTimeout(() => {
+                    window.location.href = nextPage; // Redirect after a delay
+                }, 2000); // 2 seconds delay before redirecting
+            } else {
+                feedbackDiv.textContent = `You got ${score} out of ${correctAnswers.length} correct. Please try again.`;
+                feedbackDiv.style.borderColor = "red"; // Red border for incorrect answers
+            }
+        }
+    </script>
+
+</body>
+</html>

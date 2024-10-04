@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View All Opinions</title>
+    <style>
+        body {
+            background-image: url('img/saveearth.gif'); /* Background image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            font-family: Arial, sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #ed570c;
+            background-color: rgba(255, 255, 255, 0.8); /* Make title readable */
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .opinion-container {
+            max-width: 600px;
+            margin: auto;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .opinion-item {
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+            word-wrap: break-word; /* Ensure long text wraps properly */
+        }
+
+        .refresh-btn {
+            display: block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            margin: 20px auto;
+            width: 200px;
+        }
+
+        .refresh-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>All User Opinions</h1>
+
+    <div class="opinion-container" id="opinionList">
+        <!-- The opinions will be displayed here dynamically -->
+    </div>
+
+    <button class="refresh-btn" onclick="refreshOpinions()">Refresh Opinions</button>
+
+    <script>
+        // Function to retrieve and display all opinions
+        function displayOpinions() {
+            const opinionList = document.getElementById('opinionList');
+            const opinions = JSON.parse(localStorage.getItem('userOpinions')) || [];
+
+            opinionList.innerHTML = ""; // Clear previous content
+
+            if (opinions.length === 0) {
+                opinionList.innerHTML = "<p>No opinions submitted yet.</p>";
+            } else {
+                opinions.forEach(opinion => {
+                    const opinionItem = document.createElement('div');
+                    opinionItem.className = 'opinion-item';
+                    opinionItem.textContent = opinion;
+                    opinionList.appendChild(opinionItem);
+                });
+            }
+        }
+
+        // Refresh opinions on button click
+        function refreshOpinions() {
+            displayOpinions();
+        }
+
+        // Automatically display opinions when the page loads
+        window.onload = displayOpinions;
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz 2: The Present</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Ensure html and body take full height */
+        html, body {
+            height: 100%; /* Set height to 100% for full-page coverage */
+            margin: 0; /* Remove default margin */
+            padding: 0; /* Remove default padding */
+        }
+
+        body {
+            background-image: url('/img/q2p.webp'); /* Replace with your background image path */
+            background-size: cover; /* Ensures the image covers the entire background */
+            background-position: center; /* Centers the image */
+            background-repeat: no-repeat; /* Prevents the image from repeating */
+            color: white; /* Changes text color to white for better visibility */
+        }
+
+        header {
+            padding: 10px;
+            text-align: center;
+        }
+
+        header h1 {
+            background-color: black; /* Black box for the h1 */
+            color: rgb(235, 215, 113); /* Text color */
+            padding: 20px; /* Padding inside the box */
+            border-radius: 5px; /* Rounded corners (optional) */
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Centers the quiz content */
+            padding: 20px;
+            height: 100%; /* Ensures main takes full height */
+            justify-content: center; /* Centers content vertically */
+        }
+
+        .quiz-form {
+            max-width: 600px; /* Limit the width of the quiz form */
+            background-color: rgba(0, 0, 0, 0.7); /* Dark background for better visibility */
+            border-radius: 10px; /* Rounded corners */
+            padding: 20px; /* Padding inside the form */
+        }
+
+        .quiz-form p {
+            margin: 10px 0; /* Spacing between questions */
+        }
+
+        .next-btn {
+            padding: 10px 20px; /* Button padding */
+            background-color: #eccd5f; /* Button background color */
+            color: rgb(18, 3, 3); /* Button text color */
+            border: none; /* No border */
+            border-radius: 5px; /* Rounded button corners */
+            cursor: pointer; /* Pointer cursor on hover */
+            font-size: 16px; /* Font size */
+            margin-top: 20px; /* Spacing above the button */
+        }
+
+        .next-btn:hover {
+            background-color: #efb763; /* Darker shade on hover */
+        }
+
+        /* Styled feedback box */
+        #feedback {
+            display: none; /* Initially hidden */
+            max-width: 600px; /* Limit the width of the feedback box */
+            background-color: rgba(255, 255, 255, 0.8); /* Light background for feedback */
+            color: black; /* Dark text for feedback */
+            border: 2px solid #4CAF50; /* Green border */
+            border-radius: 10px; /* Rounded corners */
+            padding: 20px; /* Padding inside the feedback box */
+            margin-top: 20px; /* Space above feedback */
+            text-align: center; /* Center align feedback */
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Quiz 2: The Present</h1>
+    </header>
+
+    <main>
+        <form id="quiz2" class="quiz-form">
+            <p>1. What is happening to the polar ice caps?</p>
+            <input type="radio" id="q1a1" name="q1" value="They are melting">
+            <label for="q1a1">They are melting</label><br>
+            <input type="radio" id="q1a2" name="q1" value="They are growing">
+            <label for="q1a2">They are growing</label><br>
+
+            <p>2. What natural disaster is becoming more frequent?</p>
+            <input type="radio" id="q2a1" name="q2" value="Wildfires">
+            <label for="q2a1">Wildfires</label><br>
+            <input type="radio" id="q2a2" name="q2" value="Tornadoes">
+            <label for="q2a2">Tornadoes</label><br>
+
+            <button type="button" class="next-btn" onclick="submitQuiz('quiz2', 'chapter3.html', ['They are melting', 'Wildfires'])">Submit Quiz</button>
+        </form>
+
+        <div id="feedback"></div> <!-- Feedback box -->
+    </main>
+
+    <script>
+        function submitQuiz(formId, nextPage, correctAnswers) {
+            const form = document.getElementById(formId);
+            const formData = new FormData(form);
+            let score = 0;
+
+            // Check answers
+            correctAnswers.forEach((answer, index) => {
+                if (formData.get(`q${index + 1}`) === answer) {
+                    score++;
+                }
+            });
+
+            // Display feedback
+            const feedbackDiv = document.getElementById('feedback');
+            feedbackDiv.style.display = 'block'; // Show the feedback box
+
+            // Clear previous feedback content
+            feedbackDiv.textContent = '';
+
+            if (score === correctAnswers.length) {
+                feedbackDiv.textContent = "Congratulations! You answered all questions correctly!";
+                feedbackDiv.style.color = "green"; // Feedback color for correct answers
+                feedbackDiv.style.borderColor = "green"; // Green border for correct answers
+                setTimeout(() => {
+                    window.location.href = nextPage; // Redirect after a delay
+                }, 2000); // 2 seconds delay before redirecting
+            } else {
+                feedbackDiv.textContent = `You got ${score} out of ${correctAnswers.length} correct. Please try again.`;
+                feedbackDiv.style.color = "red"; // Feedback color for incorrect answers
+                feedbackDiv.style.borderColor = "red"; // Red border for incorrect answers
+            }
+        }
+    </script>
+</body>
+</html>

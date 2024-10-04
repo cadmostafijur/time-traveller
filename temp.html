@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag and Drop: Set Background</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            margin-top: 20px;
+            color: #333;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 50px;
+        }
+
+        /* Image A (the draggable image) */
+        .image-piece {
+            width: 100px;
+            height: 100px;
+            cursor: pointer;
+            border: 2px solid #ccc;
+            transition: transform 0.2s;
+            margin-right: 50px;
+        }
+
+        .image-piece:hover {
+            transform: scale(1.1);
+        }
+
+        .image-piece img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Image B (the target image) */
+        .image-target {
+            width: 200px;
+            height: 200px;
+            border: 2px dashed #aaa;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .image-target img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Drag Image A to Image B</h1>
+    
+    <div class="container">
+        <!-- Draggable Image A -->
+        <div class="image-piece" draggable="true" id="pieceA" ondragstart="drag(event)">
+            <img src="img/seed.png" alt="Image A">
+        </div>
+
+        <!-- Target Image B -->
+        <div class="image-target" id="targetB" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <img src="img/soil.png" alt="Image B" id="target-image">
+        </div>
+    </div>
+
+    <script>
+        // Allow the drop event
+        function allowDrop(event) {
+            event.preventDefault();
+        }
+
+        // Drag the image
+        function drag(event) {
+            event.dataTransfer.setData("text", event.target.id); // Pass the id of the dragged image
+        }
+
+        // Drop the image on the target
+        function drop(event) {
+            event.preventDefault();
+            var imageId = event.dataTransfer.getData("text");
+            var draggedElement = document.getElementById(imageId);
+
+            // Set the background of target image (B) to the dragged image (A)
+            var target = document.getElementById("targetB");
+            var draggedImageSrc = draggedElement.querySelector('img').src;
+            target.style.backgroundImage = "url('" + draggedImageSrc + "')";
+            
+            // Optionally hide the original img element of B after the drop
+            var targetImage = document.getElementById("target-image");
+            targetImage.style.display = 'none';  // Hide the original image
+        }
+    </script>
+
+</body>
+</html>
