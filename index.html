@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -12,22 +12,110 @@
       Your browser does not support the audio element.
       </audio>
     <!-- Background music -->
-    <audio id="background-music" autoplay loop >
+<!--     <audio id="background-music" autoplay loop >
         <source src="./audio/audio.mp3" type="audio/mp3"> 
+        Your browser does not support the audio element.
+    </audio> -->
+
+    <!-- Landing Page -->
+<!--     <div class="landing-page"> -->
+        <!-- <h1>There are time travellers among us. Continue and you'll know them.</h1> -->
+<!--         <button class="start-btn" onclick="window.location.href='instruction.html'">Start</button>
+    </div> -->
+
+    <!-- Background Video -->
+<!--     <video autoplay muted loop id="background-video">
+        <source src="/img/bluenew.gif" type="video/mp4"> <!-- Replace with your video file -->
+<!--         Your browser does not support the video tag. -->
+<!--     </video> -->
+
+<!-- </body> -->
+<!-- </html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Traveler</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        video {
+            opacity: 0; /* Makes the video invisible */
+            position: absolute; /* Positioning it absolutely to cover the whole page */
+            top: 0;
+            left: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            z-index: -1; /* Places it behind other content */
+        }
+        .audio-controller {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .audio-controller img {
+            width: 24px;
+            height: 24px;
+        }
+
+       
+    </style>
+</head>
+<body>
+
+    <!-- Background music -->
+    <audio id="background-music" autoplay loop >
+        <source src="./audio.mp3" type="audio/mp3"> 
         Your browser does not support the audio element.
     </audio>
 
+    <!-- Audio controller button -->
+    <div class="audio-controller" id="audio-controller">
+        <img id="audio-icon" src="img/pause.png" alt="Pause Icon"> <!-- Default icon is pause -->
+    </div>
+
     <!-- Landing Page -->
     <div class="landing-page">
-        <!-- <h1>There are time travellers among us. Continue and you'll know them.</h1> -->
         <button class="start-btn" onclick="window.location.href='instruction.html'">Start</button>
     </div>
 
     <!-- Background Video -->
     <video autoplay muted loop id="background-video">
-        <source src="/img/bluenew.gif" type="video/mp4"> <!-- Replace with your video file -->
+        <source src="/img/bluenew.gif" type="video/gif"> <!-- Replace with your video file -->
         Your browser does not support the video tag.
     </video>
+
+    <script>
+        // Select elements
+        const audio = document.getElementById('background-music');
+        const audioController = document.getElementById('audio-controller');
+        const audioIcon = document.getElementById('audio-icon');
+
+        // Default icon is pause
+        let isPlaying = true;
+
+        // Toggle audio play/pause on click
+        audioController.addEventListener('click', function() {
+            if (isPlaying) {
+                audio.pause();
+                audioIcon.src = './img/play.png'; // Change to play icon
+            } else {
+                audio.play();
+                audioIcon.src = './img/pause.png'; // Change back to pause icon
+            }
+            isPlaying = !isPlaying; // Toggle play state
+        });
+    </script>
 
 </body>
 </html>
