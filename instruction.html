@@ -212,9 +212,37 @@
             width: 100%;
             border-radius: 10px;
         }
+        .audio-controller {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .audio-controller img {
+            width: 24px;
+            height: 24px;
+        }
     </style>
 </head>
 <body>
+<audio id="background-music" autoplay loop >
+        <source src="./audio.mp3" type="audio/mp3"> 
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Audio controller button -->
+    <div class="audio-controller" id="audio-controller">
+        <img id="audio-icon" src="img/pause.png" alt="Pause Icon"> <!-- Default icon is pause -->
+    </div>
 
     <div class="instruction-page">
         <div class="instruction-content">
@@ -238,7 +266,27 @@
             <button class="next-btn" onclick="window.location.href='chapter1.html'">Continue</button>
         </div>
     </div>
+<script>
+        // Select elements
+        const audio = document.getElementById('background-music');
+        const audioController = document.getElementById('audio-controller');
+        const audioIcon = document.getElementById('audio-icon');
 
+        // Default icon is pause
+        let isPlaying = true;
+
+        // Toggle audio play/pause on click
+        audioController.addEventListener('click', function() {
+            if (isPlaying) {
+                audio.pause();
+                audioIcon.src = './img/play.png'; // Change to play icon
+            } else {
+                audio.play();
+                audioIcon.src = './img/pause.png'; // Change back to pause icon
+            }
+            isPlaying = !isPlaying; // Toggle play state
+        });
+    </script>
 </body>
 </html>
 
