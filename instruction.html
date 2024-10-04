@@ -63,7 +63,7 @@
 </body>
 </html> -->
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -128,12 +128,12 @@
     <div class="instruction-page">
         <div class="instruction-content">
             <!-- <h2>Welcome to Climate Change Education</h2> -->
-             <h2>Time Connects Us All</h2>
+<!--              <h2>Time Connects Us All</h2> -->
             <!-- Video section -->
-            <div class="video-section">
+<!--             <div class="video-section"> -->
                 <!-- <h3>Introduction to Climate Change</h3> -->
-                <h3>Earth from 1880 to 2022</h3>
-                <video controls>
+<!--                 <h3>Earth from 1880 to 2022</h3> -->
+<!--                 <video controls>
                     <source src="/img/GlobalWarmingfrom1880to2022.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
@@ -151,5 +151,94 @@
         </div>
     </div>
 
+</body> -->
+<!-- </html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instruction - Climate Change Education</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-image: url('/img/giphy.webp'); /* Path to your background image */
+            background-size: cover; /* Ensures the image covers the entire background */
+            background-position: center; /* Centers the image */
+            background-repeat: no-repeat; /* Prevents the image from repeating */
+            color: white; /* Changes text color to white for better visibility */
+        }
+
+        .instruction-page {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Full height of the viewport */
+            text-align: center; /* Center text alignment */
+            /* background-color: rgba(0, 0, 0, 0.5); Optional: dark overlay for better text visibility */
+        }
+
+        .instruction-content {
+            max-width: 600px; /* Limit the width of the content */
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7); /*Optional: dark background for content*/
+            border-radius: 10px; /* Rounded corners for the content box */
+        }
+
+        .next-btn {
+            padding: 10px 20px; /* Button padding */
+            background-color: #f69607; /* Button background color */
+            color: white; /* Button text color */
+            border: none; /* No border */
+            border-radius: 5px; /* Rounded button corners */
+            cursor: pointer; /* Pointer cursor on hover */
+            font-size: 16px; /* Font size */
+            margin-top: 20px; /* Space above the button */
+        }
+
+        .next-btn:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+
+        .video-section {
+            margin: 20px 0;
+        }
+
+        .video-section h3 {
+            margin-bottom: 10px;
+        }
+
+        video {
+            width: 100%;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="instruction-page">
+        <div class="instruction-content">
+            <h2>Time Connects Us All</h2>
+            <!-- Video section -->
+            <div class="video-section">
+                <h3>Earth from 1880 to 2022</h3>
+                <video controls>
+                    <source src="/img/GlobalWarmingfrom1880to2022.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <p>This educational journey will take you through 3 key chapters:</p>
+            <ul>
+                <li><strong>Chapter 1: The Past</strong> – Learn about the origins of climate change awareness.</li>
+                <li><strong>Chapter 2: The Present</strong> – Explore the current state of the Earth.</li>
+                <li><strong>Chapter 3: The Future</strong> – Discover how technology can guide us toward a sustainable future.</li>
+            </ul>
+
+            <!-- Move the button below the chapter list -->
+            <button class="next-btn" onclick="window.location.href='chapter1.html'">Continue</button>
+        </div>
+    </div>
+
 </body>
 </html>
+
